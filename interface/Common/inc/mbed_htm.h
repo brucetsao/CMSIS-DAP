@@ -16,7 +16,7 @@
 #ifndef MBED_HTM_H
 #define MBED_HTM
 
-#include "version_git.h"
+
 
 #if GIT_LOCAL_MODS == 1
     #warning "Building with local modifications."
