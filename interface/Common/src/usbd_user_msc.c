@@ -42,6 +42,8 @@
 #   define WANTED_SIZE_IN_KB                        (256)
 #elif defined(DBG_K20D50M)
 #   define WANTED_SIZE_IN_KB                        (128)
+#elif defined(DBG_K22F)
+#   define WANTED_SIZE_IN_KB                        (512)
 #elif defined(DBG_K64F)
 #   define WANTED_SIZE_IN_KB                        (1024)
 #elif defined(DBG_LPC812)
@@ -58,6 +60,8 @@
 #   define WANTED_SIZE_IN_KB                        (512)
 #elif defined(DBG_LPC11U68)
 #   define WANTED_SIZE_IN_KB                        (256)
+#elif defined(DBG_LPC4337)
+#   define WANTED_SIZE_IN_KB                        (1024)
 #endif
 
 //------------------------------------------------------------------- CONSTANTS
@@ -559,7 +563,7 @@ static void initDisconnect(uint8_t success) {
         enter_isp();
     }
 #else
-    int autorst = success;
+    int autorst = 0;
 #endif
     drag_success = success;
     if (autorst)

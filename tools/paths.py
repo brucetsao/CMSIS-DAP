@@ -20,12 +20,12 @@ ROOT = abspath(join(dirname(__file__), ".."))
 TMP_DIR = join(ROOT, 'tools', 'tmp')
 
 def get_bootloader_path(interface):
-    return join(ROOT, 'bootloader/mdk/%(interface)s/Obj/%(interface)s_bootloader.axf' % {
+    return join(ROOT, 'bootloader\mdk\%(interface)s\Obj\%(interface)s_bootloader.axf' % {
                             'interface': interface.lower()})
 
 
 def get_interface_path(interface, target, bootloader=True):
-    return join(ROOT, "interface/mdk/%(interface)s/Obj/%(interface)s_%(target)s_if_mbed%(has_bootloader)s.axf" % {
+    return join(ROOT, "interface\mdk\%(interface)s\Obj\%(interface)s_%(target)s_if_mbed%(has_bootloader)s.axf" % {
                         'interface': interface.lower(),
                         'target': target.lower(),
                         'has_bootloader': '_bootloader' if bootloader else ''})
