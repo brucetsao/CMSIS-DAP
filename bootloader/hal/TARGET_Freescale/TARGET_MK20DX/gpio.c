@@ -18,15 +18,22 @@
 
 void gpio_init(void) {
     // clock for LED and button
-    SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK | SIM_SCGC5_PORTB_MASK;
+    SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK | SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTC_MASK;
 
     // Green LED, only one LED available
     PORTD->PCR[4] = PORT_PCR_MUX(1);
     PTD->PDOR = 1UL << 4;
     PTD->PDDR = 1UL << 4;
-
+	
+		
+    // Init PTC4 by Vash
+    PORTC->PCR[4] = PORT_PCR_MUX(1);
+    PTC->PDOR = 1UL << 4;
+    PTC->PDDR = 1UL << 4;
+    PTC->PCOR |= 1UL << 4; // LED always on
+	
     // RST button
-    PORTB->PCR[1] = PORT_PCR_PS_MASK | PORT_PCR_PE_MASK | PORT_PCR_PFE_MASK | PORT_PCR_MUX(1);
+    PORTB->PCR[1] = PORT_PCR_PS_MASK | PORT_PCR_PE_MASK | PORT_PCR_PFE_MASK |PORT_PCR_MUX(1);
 }
 
 void gpio_set_dap_led(uint8_t state) {
